@@ -1,0 +1,25 @@
+<div ng-controller="boardController">
+   <span class="btn btn-info" ng-if="!board.winner">Up : {{board.player}}</span>
+    <div class="btn btn-info" ng-if="board.winner" ng-click="resetBoard()">
+       <div ng-if="board.winner === 'c'">
+           CAT
+       </div>
+        <div ng-if="board.winner !== 'c'">
+          WINNER : {{board.winner}}
+        </div>
+
+        <div class="btn btn-new" >New Game</div></div>
+    <div class="board">
+        <div class="box" ng-click="addPlayer(0,0)">{{board.boxes[0][0]||"_"}}</div>
+        <div class="box" ng-click="addPlayer(0,1)">{{board.boxes[0][1]||"_"}}</div>
+        <div class="box" ng-click="addPlayer(0,2)">{{board.boxes[0][2]||"_"}}</div>
+
+        <div class="box" ng-click="addPlayer(1,0)">{{board.boxes[1][0]||"_"}}</div>
+        <div class="box" ng-click="addPlayer(1,1)">{{board.boxes[1][1]||"_"}}</div>
+        <div class="box" ng-click="addPlayer(1,2)">{{board.boxes[1][2]||"_"}}</div>
+
+        <div class="box" ng-click="addPlayer(2,0)">{{board.boxes[2][0]||"_"}}</div>
+        <div class="box" ng-click="addPlayer(2,1)">{{board.boxes[2][1]||"_"}}</div>
+        <div class="box" ng-click="addPlayer(2,2)">{{board.boxes[2][2]||"_"}}</div>
+    </div>
+</div>
