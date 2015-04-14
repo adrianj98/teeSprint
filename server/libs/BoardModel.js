@@ -1,3 +1,9 @@
+/**
+ * model for board data
+ *
+ * @param $dataHandler
+ * @constructor
+ */
 function BoardModel($dataHandler) {
     this.handler = $dataHandler;
 
@@ -7,7 +13,12 @@ function BoardModel($dataHandler) {
 
 
 BoardModel.prototype = {
-
+    /**
+     * marks a box
+     * @param x
+     * @param y
+     * @returns {boolean}
+     */
     markBox: function (x, y) {
         var who = this.getPlayer();
         if ((who !== 'x' ) && ( who !== 'o' )) {
@@ -24,9 +35,17 @@ BoardModel.prototype = {
         this.handler.setPlayer(who === 'x' ? 'o' : 'x');
         return true;
     },
+    /**
+     * gets all the boxes on the board
+     * @returns {*}
+     */
     getBoxes: function () {
         return this.handler.getBoxes();
     },
+    /**
+     * calculates and returns the winner or "c" if CAT else null
+     * @returns {*}
+     */
     getWinner: function () {
         return this.winner = this.checkWin();
     },
@@ -60,9 +79,16 @@ BoardModel.prototype = {
         return null;
 
     },
+    /**
+     * clears board for new game
+     */
     clear : function(){
         this.handler.clear();
     },
+    /** gets the current player that it is his/her turn
+     *
+     * @returns {*}
+     */
     getPlayer: function () {
         return this.handler.getPlayer();
     },
@@ -79,7 +105,9 @@ BoardModel.prototype = {
     }
 }
 
-
+/**
+ * this is a data abstract layer so that in memory or db can be used
+ */
 function memoryDataHandler() {
     this.board = {};
     this.clear();
@@ -111,6 +139,5 @@ memoryDataHandler.prototype = {
 
 }
 
-if ((typeof module !== 'undefined') && (module.exports)) {
+
     module.exports = {memoryDataHandler: memoryDataHandler, BoardModel: BoardModel};
-}

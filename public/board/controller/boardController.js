@@ -3,6 +3,7 @@ var board = angular.module('board', ['ngResource']);
 board.controller('boardController', ['$scope','boardData', function ($scope,boardData) {
 
     $scope.addPlayer = function(x,y){
+        $scope.isloading = x +"" + y;
         var board = boardData.mark({x:x,y:y},function() {
             $scope.board = board;
         });
